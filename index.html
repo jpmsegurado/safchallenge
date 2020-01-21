@@ -1,16 +1,35 @@
 <html>
   <body>
     <form id="form">
-      <label for="purchase">Write here your purchase</label>
-      <input type="text" id="purchase">
+      <label for="purchase">Write here your purchase</label><br>
+      <textarea type="text" id="purchase" value="2 book at 2.45" rows="10"></textarea><br>
       <button type="submit">Submit</button>
     </form>
   </body>
 
   <script>
+
+    function checkNormalInput (input) {
+      return /[0-9]\s[\a-zA-Z\s]*\sat\s[\[0-9]+(\.[0-9]+)?$]*/.test(input)
+    }
+
+    function checkImportedInput (input) {
+      return /[0-9]*\simported\s[\a-zA-Z\s]*\sat\s[\[0-9]+(\.[0-9]+)?$]*/.test(input) ||
+      /[0-9]*\s[\a-zA-Z\s]*\sof\simported\s[\a-zA-Z\s]*\sat\s[\[0-9]+(\.[0-9]+)?$]*/.test(input)
+    }
+
+    function isValidInput(input) {
+      const isNormal = checkNormalInput(input)
+      const isImported = checkImportedInput(input)
+      return isNormal || isImported
+    }
+
     const form = document.getElementById('form')
     function onSubmit(event) {
       event.preventDefault()
+
+      const input = document.getElementById('purchase').value
+      console.log(input, isValidInput(input))
     }
     form.addEventListener('submit', onSubmit)
   </script>
