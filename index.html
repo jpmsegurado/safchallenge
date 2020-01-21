@@ -1,0 +1,17 @@
+<html>
+  <body>
+    <form id="form">
+      <label for="purchase">Write here your purchase</label>
+      <input type="text" id="purchase">
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+
+  <script>
+    const form = document.getElementById('form')
+    function onSubmit(event) {
+      event.preventDefault()
+    }
+    form.addEventListener('submit', onSubmit)
+  </script>
+</html>
