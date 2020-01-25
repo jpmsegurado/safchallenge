@@ -28,12 +28,15 @@ export default function Controller () {
 
   this.onSubmit = function(event) {
     event.preventDefault()
-
     const input = document.getElementById('purchase').value
-    const purchases = createPurchases(input)
 
-    const results = document.getElementById('results')
-    const receipts = generateReceipts(purchases)
-    results.value = receipts
+    try {
+      const purchases = createPurchases(input)
+      const results = document.getElementById('results')
+      const receipts = generateReceipts(purchases)
+      results.value = receipts
+    } catch (e) {
+      results.value = e.message
+    }
   }
 }
