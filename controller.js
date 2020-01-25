@@ -5,8 +5,11 @@ export default function Controller () {
     event.preventDefault()
 
     const input = document.getElementById('purchase').value
-    const purchase = new Purchase().create({ input })
-    console.log(purchase)
-    // console.log(purchase.input, purchase.type)
+    const purchases = []
+    const inputs = input.split('\n')
+    inputs.forEach(input => { purchases.push(new Purchase().create({ input })) })
+    purchases.forEach(p => console.log(p.getReceipt()))
+    const totalTaxAmount = (purchases.reduce((total, purchase) => total + purchase.getTaxAmount(), 0)).toFixed(2)
+    console.log(totalTaxAmount)
   }
 }
