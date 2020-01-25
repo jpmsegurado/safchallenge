@@ -1,9 +1,21 @@
 <html>
   <body>
+    <head>
+      <link rel="stylesheet" href="style.css">
+    </head>
     <form id="form">
-      <label for="purchase">Write here your purchase</label><br>
-      <textarea type="text" id="purchase" value="2 book at 2.45" rows="10" style="width: 600px;"></textarea><br>
-      <button type="submit">Submit</button>
+      <div class="col">
+        <label for="purchase">Write here your purchase</label>
+        <textarea type="text" id="purchase" value="2 book at 2.45" rows="10"  ></textarea>
+      </div>
+      <div class="col">
+        <label>Result here</label>
+        <textarea id="results" readonly rows="10"></textarea>
+      </div>
+
+      <div class="col">
+        <button type="submit">Submit</button>
+      </div>
     </form>
   </body>
 
