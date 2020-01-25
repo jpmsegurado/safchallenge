@@ -97,8 +97,12 @@ export default function Purchase () {
     return rounded * amount
   }
 
+  this.getTotal = () => {
+    return calculateTotal(this)
+  }
+
   this.getReceipt = () => {
-    const result = `${this.amount} ${this.good.name}: ${calculateTotal(this)}`
+    const result = `${this.amount} ${this.good.name}: ${calculateTotal(this).toFixed(2)}`
     return result
   }
 
