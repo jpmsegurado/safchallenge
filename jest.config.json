@@ -1,9 +1,6 @@
 {
   "collectCoverage": true,
-  "coverageDirectory": "/coverage",
   "collectCoverageFrom": [
-    "**/*.js",
-    "!**/*.test.js",
-    "!**/node_modules/**"
+    "<rootDir>/src/*.js"
   ]
 }
