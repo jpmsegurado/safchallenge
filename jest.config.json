@@ -1,6 +1,8 @@
 {
   "collectCoverage": true,
   "collectCoverageFrom": [
-    "<rootDir>/src/*.js"
+    "<rootDir>/src/good.js",
+    "<rootDir>/src/purchase.js",
+    "<rootDir>/src/controller.js"
   ]
 }

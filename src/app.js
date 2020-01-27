@@ -1,6 +1,7 @@
 import Controller from './controller.js'
 
-const controller = new Controller()
-
-const form = document.getElementById('form')
-form.addEventListener('submit', controller.onSubmit)
+document.addEventListener('DOMContentLoaded', () => {
+  const controller = new Controller()
+  const form = document.getElementById('form')
+  form.addEventListener('submit', controller.onSubmit)
+})

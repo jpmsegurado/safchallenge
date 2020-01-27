@@ -2,14 +2,14 @@ import Purchase from './purchase.js'
 
 export default function Controller () {
 
-  function createPurchases(input) {
+  this.createPurchases = (input) => {
     const purchases = []
     const inputs = input.split('\n')
     inputs.forEach(input => { purchases.push(new Purchase().create({ input })) })
     return purchases
   }
 
-  function generateReceipts (purchases) {
+  this.generateReceipts = (purchases) => {
     let taxSaleAmount = 0
     let total = 0
     let receipts = ''
@@ -26,14 +26,14 @@ export default function Controller () {
     return receipts
   }
 
-  this.onSubmit = function(event) {
+  this.onSubmit = (event) => {
     event.preventDefault()
     const input = document.getElementById('purchase').value
+    const results = document.getElementById('results')
 
     try {
-      const purchases = createPurchases(input)
-      const results = document.getElementById('results')
-      const receipts = generateReceipts(purchases)
+      const purchases = this.createPurchases(input)
+      const receipts = this.generateReceipts(purchases)
       results.value = receipts
     } catch (e) {
       results.value = e.message
