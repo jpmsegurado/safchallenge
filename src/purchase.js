@@ -50,7 +50,7 @@ export default function Purchase () {
     const amountRegex = /[0-9]{1,5}\s/
     const amount = parseInt(input.match(amountRegex)[0])
     const goodRegex = /\s[\a-zA-Z\s]*at/
-    const good = input.match(goodRegex)[0].replace(' at', '').trim()
+    const good = input.match(goodRegex)[0].replace(' at', '').replace('imported ', '').trim()
     const priceRegex = /[\[0-9]+(\.[0-9]+)?$]*/
     const price = parseFloat(input.match(priceRegex)[0])
     return { amount, good, price }
@@ -85,7 +85,7 @@ export default function Purchase () {
     const importedTax = this.calculateImportedTax(type)
     const taxes = goodTax + importedTax
     const taxValue = price * taxes
-    return taxValue
+    return this.roundToTwoDecimals(taxValue)
   }
 
   this.calculateTotal = ({ good, amount, type, price }) => {
@@ -102,7 +102,8 @@ export default function Purchase () {
   }
 
   this.getReceipt = () => {
-    const result = `${this.amount} ${this.good.name}: ${this.calculateTotal(this).toFixed(2)}`
+    const imported = this.isImported(this.input) ? 'imported ' : ''
+    const result = `${this.amount} ${imported}${this.good.name}: ${this.calculateTotal(this).toFixed(2)}`
     return result
   }
 

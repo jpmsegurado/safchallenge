@@ -9,7 +9,7 @@ export default function Good () {
 
   const book = ['book']
   const medical = ['packet of headache pills']
-  const food = ['chocolate bar', 'imported box of chocolates', 'box of imported chocolates']
+  const food = ['chocolate bar', 'box of chocolates']
 
   this.create = ({ name }) => {
     this.name = name
